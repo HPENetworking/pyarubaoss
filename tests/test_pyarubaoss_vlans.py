@@ -104,6 +104,27 @@ class TestModifyVLAN(TestCase):
         self.assertEqual(modified, 200)
         auth.logout()
 
+class TestDeleteVLAN(TestCase):
+    """
+    Test Case for pyarubaaoss vlans create vlans function
+    """
+    def setUp(self):
+        auth = AOSSAuth(switch, username, password)
+        create_vlan(auth, 30, "Test2")
+        auth.logout()
+
+    def tearDown(self):
+        pass
+
+    def test_delete_dev_vlan(self):
+        """
+        test case for modify_vlans
+
+        """
+        auth = AOSSAuth(switch, username, password)
+        deleted = delete_vlan(auth, 30)
+        self.assertEqual(deleted, 204)
+        auth.logout()
 
 class TestGetVLANPorts(TestCase):
     """
@@ -120,9 +141,11 @@ class TestGetVLANPorts(TestCase):
         test case for get_vlan_ports
 
         """
-        #if skiptest is True:
-         #   raise SkipTest
+        if skiptest is True:
+            raise SkipTest
         auth = AOSSAuth(switch, username, password)
         vlan_ports = get_vlan_ports(auth)
         self.assertIs(type(vlan_ports), dict)
+        if 'message' in vlan_ports:
+            self.assertNotEqual(vlan_ports['message'], 'Error 404: Not Found.')
         auth.logout()

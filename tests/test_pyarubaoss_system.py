@@ -31,6 +31,8 @@ class TestGetSystem(TestCase):
         auth = AOSSAuth(switch, username, password)
         system = get_system(auth)
         self.assertIs(type(system), dict)
+        if 'message' in system:
+            self.assertNotEqual(system['message'], 'Error 404: Not Found.')
         auth.logout()
 
 
@@ -51,6 +53,8 @@ class TestGetSystemStatus(TestCase):
         auth = AOSSAuth(switch, username, password)
         status = get_system_status(auth)
         self.assertIs(type(status), dict)
+        if 'message' in status:
+            self.assertNotEqual(status['message'], 'Error 404: Not Found.')
         auth.logout()
 
 
@@ -71,6 +75,8 @@ class TestGetSystemStatusSwitch(TestCase):
         auth = AOSSAuth(switch, username, password)
         switch_status = get_system_status_switch(auth)
         self.assertIs(type(switch_status), dict)
+        if 'message' in switch_status:
+            self.assertNotEqual(switch_status['message'], 'Error 404: Not Found.')
         auth.logout()
 
 
@@ -88,9 +94,13 @@ class TestGetSystemCPU(TestCase):
         test case for get_system_cpu
 
         """
+        if skiptest is True:
+            raise SkipTest
         auth = AOSSAuth(switch, username, password)
         cpu = get_system_cpu(auth)
         self.assertIs(type(cpu), dict)
+        if 'message' in cpu:
+            self.assertNotEqual(cpu['message'], 'Error 404: Not Found.' )
         auth.logout()
 
 
@@ -108,15 +118,17 @@ class TestGetSystemMemory(TestCase):
         test case for get_system_memory
 
         """
-        #if skiptest is True:
-         #   raise SkipTest
+        if skiptest is True:
+            raise SkipTest
         auth = AOSSAuth(switch, username, password)
         memory = get_system_memory(auth)
         self.assertIs(type(memory), dict)
+        if 'message' in memory:
+            self.assertNotEqual(memory['message'], 'Error 404: Not Found.')
         auth.logout()
 
 
-class TestGetSystemMemory(TestCase):
+class TestGetSystemStorage(TestCase):
     """
     Test Case for pyarubaaoss vlans get vlans function
     """
@@ -130,7 +142,55 @@ class TestGetSystemMemory(TestCase):
         test case for get_system_memory
 
         """
+        if skiptest is True:
+            raise SkipTest
         auth = AOSSAuth(switch, username, password)
         storage = get_system_storage(auth)
         self.assertIs(type(storage), dict)
+        if 'message' in storage:
+            self.assertNotEqual(storage['message'], 'Error 404: Not Found.')
+        auth.logout()
+
+
+class TestGetSystemTime(TestCase):
+    """
+    Test Case for pyarubaaoss vlans get vlans function
+    """
+    def SetUp(self):
+        pass
+    def TearDown(self):
+        pass
+
+    def test_get_system_time(self):
+        """
+        test case for get_system_memory
+
+        """
+        auth = AOSSAuth(switch, username, password)
+        time = get_system_time(auth)
+        self.assertIs(type(time), dict)
+        if 'message' in time:
+            self.assertNotEqual(time['message'], 'Error 404: Not Found.')
+        auth.logout()
+
+
+class TestGetLLDPNeigh(TestCase):
+    """
+    Test Case for pyarubaaoss vlans get vlans function
+    """
+    def SetUp(self):
+        pass
+    def TearDown(self):
+        pass
+
+    def test_get_lldp_neigh(self):
+        """
+        test case for get_system_memory
+
+        """
+        auth = AOSSAuth(switch, username, password)
+        neigh = get_lldp_neigh(auth)
+        self.assertIs(type(neigh), list)
+        if 'message' in neigh:
+            self.assertNotEqual(neigh['message'], 'Error 404: Not Found.')
         auth.logout()

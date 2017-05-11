@@ -7,7 +7,7 @@ import requests, json
 
 def get_vlans(auth):
     headers = {'cookie': auth.cookie}
-    url_vlans = "http://" + auth.ipaddr + "/rest/v1/vlans"
+    url_vlans = "http://" + auth.ipaddr + "/rest/v3/vlans"
     r = requests.get(url_vlans, headers=headers)
     try:
         vlans = json.loads(r.text)['vlan_element']
@@ -18,7 +18,7 @@ def get_vlans(auth):
 
 def get_vlan(auth, vlan_id):
     headers = {'cookie': auth.cookie}
-    url_vlan = "http://" + auth.ipaddr + "/rest/v1/vlans/" + str(vlan_id)
+    url_vlan = "http://" + auth.ipaddr + "/rest/v3/vlans/" + str(vlan_id)
     r = requests.get(url_vlan, headers=headers)
     try:
         vlan = json.loads(r.text)
@@ -29,7 +29,7 @@ def get_vlan(auth, vlan_id):
 
 def create_vlan(auth, vlan_id, vlan_name):
     headers = {'cookie': auth.cookie}
-    url_vlans = "http://" + auth.ipaddr + "/rest/v1/vlans"
+    url_vlans = "http://" + auth.ipaddr + "/rest/v3/vlans"
     payload_vlan = "{\"vlan_id\":" + str(vlan_id) + ",\"name\":\"" + vlan_name + "\"}"
     try:
         r = requests.post(url_vlans, data = payload_vlan, headers=headers)
@@ -39,7 +39,7 @@ def create_vlan(auth, vlan_id, vlan_name):
 
 def modify_vlan(auth, vlan_id, vlan_name):
     headers = {'cookie': auth.cookie}
-    url_vlan = "http://" + auth.ipaddr + "/rest/v1/vlans/" + str(vlan_id)
+    url_vlan = "http://" + auth.ipaddr + "/rest/v3/vlans/" + str(vlan_id)
     payload_vlan = "{\"vlan_id\":" + str(vlan_id) + ",\"name\":\"" + vlan_name + "\"}"
     try:
         r = requests.put(url_vlan, data=payload_vlan, headers=headers)
@@ -50,7 +50,7 @@ def modify_vlan(auth, vlan_id, vlan_name):
 def delete_vlan(auth, vlan_id):
     headers = {'cookie': auth.cookie}
     payload_vlan = "{\"vlan_id\":" + str(vlan_id) + "}"
-    url_vlans = "http://" + auth.ipaddr + "/rest/v1/vlans/"+str(vlan_id)
+    url_vlans = "http://" + auth.ipaddr + "/rest/v3/vlans/"+str(vlan_id)
     try:
         r = requests.delete(url_vlans, data = payload_vlan, headers=headers)
         return r.status_code
@@ -66,7 +66,7 @@ def get_vlan_ports(auth):
     :return:
     """
     headers = {'cookie': auth.cookie}
-    url_vlan_ports = "http://" + auth.ipaddr + "/rest/v1/vlans-ports/"
+    url_vlan_ports = "http://" + auth.ipaddr + "/rest/v3/vlans-ports/"
     r = requests.get(url_vlan_ports, headers=headers)
     vlan_ports = json.loads(r.text)
     return vlan_ports
