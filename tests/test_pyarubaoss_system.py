@@ -7,8 +7,8 @@ This module is used for testing the functions within the pyhpeimc.plat.alarms mo
 from unittest import TestCase
 from nose.plugins.skip import SkipTest
 
-from pyarubaaoss.auth import *
-from pyarubaaoss.system import *
+from pyarubaoss.auth import *
+from pyarubaoss.system import *
 from test_machine import *
 
 
