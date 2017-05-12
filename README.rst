@@ -12,3 +12,4 @@ For more information, please visit the project home page at `GITHub.com <https:/
 What's Changed:
 
 1.0.1 Initial Release
+1.0.2 added ip address, tests and refactored auth object to allow user to select API version
