@@ -11,7 +11,7 @@ def get_poe_ports(auth):
     :rtype list
     """
     headers = {'cookie': auth.cookie}
-    url_poe = "http://" + auth.ipaddr + "/rest/v3/poe/ports"
+    url_poe = "http://" + auth.ipaddr + "/rest/"+auth.version+"/poe/ports"
     try:
         r = requests.get(url_poe, headers=headers)
         poe_ports = json.loads(r.text)['port_poe']

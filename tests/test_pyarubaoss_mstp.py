@@ -50,7 +50,7 @@ class TestGetMSTPPorts(TestCase):
         test case for get_system
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         status = get_mstp_port(auth)
         self.assertIs(type(status), list)
         if 'message' in status:

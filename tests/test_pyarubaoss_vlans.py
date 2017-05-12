@@ -19,7 +19,7 @@ class TestGetVLANs(TestCase):
     """
     Test Case for pyarubaaoss vlans get vlans function
     """
-    def SetUp(self, admin, password):
+    def SetUp(self):
         pass
     def TearDown(self):
         pass
@@ -29,7 +29,7 @@ class TestGetVLANs(TestCase):
         test case for get_vlans
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         dev_vlans = get_vlans(auth)
         self.assertIs(type(dev_vlans), list)
         auth.logout()
@@ -48,7 +48,7 @@ class TestGetVLAN(TestCase):
         test case for get_vlans
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         dev_vlan = get_vlan(auth, 1)
         self.assertIs(type(dev_vlan), dict)
         auth.logout()
@@ -60,12 +60,12 @@ class TestCreateVLAN(TestCase):
     Test Case for pyarubaaoss vlans create vlans function
     """
     def setUp(self):
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         delete_vlan(auth, 30)
         auth.logout()
 
     def tearDown(self):
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         delete_vlan(auth, 30)
         auth.logout()
 
@@ -74,7 +74,7 @@ class TestCreateVLAN(TestCase):
         test case for get_vlans
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         new_vlan = create_vlan(auth, 30, "Test2")
         self.assertEqual(new_vlan, 201)
         auth.logout()
@@ -85,12 +85,12 @@ class TestModifyVLAN(TestCase):
     Test Case for pyarubaaoss vlans create vlans function
     """
     def setUp(self):
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         create_vlan(auth, 30, "Test2")
         auth.logout()
 
     def tearDown(self):
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         delete_vlan(auth, 30)
         auth.logout()
 
@@ -99,7 +99,7 @@ class TestModifyVLAN(TestCase):
         test case for modify_vlans
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         modified = modify_vlan(auth, 30, "Test3")
         self.assertEqual(modified, 200)
         auth.logout()
@@ -109,7 +109,7 @@ class TestDeleteVLAN(TestCase):
     Test Case for pyarubaaoss vlans create vlans function
     """
     def setUp(self):
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         create_vlan(auth, 30, "Test2")
         auth.logout()
 
@@ -121,7 +121,7 @@ class TestDeleteVLAN(TestCase):
         test case for modify_vlans
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         deleted = delete_vlan(auth, 30)
         self.assertEqual(deleted, 204)
         auth.logout()
@@ -143,7 +143,7 @@ class TestGetVLANPorts(TestCase):
         """
         if skiptest is True:
             raise SkipTest
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         vlan_ports = get_vlan_ports(auth)
         self.assertIs(type(vlan_ports), dict)
         if 'message' in vlan_ports:

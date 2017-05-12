@@ -28,7 +28,7 @@ class TestGetSystem(TestCase):
         test case for get_system
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         system = get_system(auth)
         self.assertIs(type(system), dict)
         if 'message' in system:
@@ -50,7 +50,7 @@ class TestGetSystemStatus(TestCase):
         test case for get_system
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         status = get_system_status(auth)
         self.assertIs(type(status), dict)
         if 'message' in status:
@@ -72,7 +72,7 @@ class TestGetSystemStatusSwitch(TestCase):
         test case for get_system
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         switch_status = get_system_status_switch(auth)
         self.assertIs(type(switch_status), dict)
         if 'message' in switch_status:
@@ -96,7 +96,7 @@ class TestGetSystemCPU(TestCase):
         """
         if skiptest is True:
             raise SkipTest
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         cpu = get_system_cpu(auth)
         self.assertIs(type(cpu), dict)
         if 'message' in cpu:
@@ -120,7 +120,7 @@ class TestGetSystemMemory(TestCase):
         """
         if skiptest is True:
             raise SkipTest
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         memory = get_system_memory(auth)
         self.assertIs(type(memory), dict)
         if 'message' in memory:
@@ -144,7 +144,7 @@ class TestGetSystemStorage(TestCase):
         """
         if skiptest is True:
             raise SkipTest
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         storage = get_system_storage(auth)
         self.assertIs(type(storage), dict)
         if 'message' in storage:
@@ -166,7 +166,7 @@ class TestGetSystemTime(TestCase):
         test case for get_system_memory
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         time = get_system_time(auth)
         self.assertIs(type(time), dict)
         if 'message' in time:
@@ -188,7 +188,7 @@ class TestGetLLDPNeigh(TestCase):
         test case for get_system_memory
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         neigh = get_lldp_neigh(auth)
         self.assertIs(type(neigh), list)
         if 'message' in neigh:

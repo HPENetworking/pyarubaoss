@@ -11,7 +11,7 @@ def get_mstp(auth):
     :rtype dict
     """
     headers = {'cookie': auth.cookie}
-    url_mstp = "http://" + auth.ipaddr + "/rest/v1/mstp"
+    url_mstp = "http://" + auth.ipaddr + "/rest/"+auth.version+"/mstp"
     try:
         r = requests.get(url_mstp, headers=headers)
         mstp = json.loads(r.text)

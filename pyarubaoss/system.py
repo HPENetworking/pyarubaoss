@@ -4,7 +4,7 @@ import requests, json
 
 def get_system(auth):
     headers = {'cookie': auth.cookie}
-    url_system = "http://" + auth.ipaddr + "/rest/v3/system"
+    url_system = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system"
     try:
         r = requests.get(url_system, headers=headers)
         system = json.loads(r.text)
@@ -14,7 +14,7 @@ def get_system(auth):
 
 def get_system_status(auth):
     headers = {'cookie': auth.cookie}
-    url_status = "http://" + auth.ipaddr + "/rest/v3/system/status"
+    url_status = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/status"
     try:
         r = requests.get(url_status, headers=headers)
         status = json.loads(r.text)
@@ -24,7 +24,7 @@ def get_system_status(auth):
 
 def get_system_status_switch(auth):
     headers = {'cookie': auth.cookie}
-    url_status = "http://" + auth.ipaddr + "/rest/v3/system/status/switch"
+    url_status = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/status/switch"
     try:
         r = requests.get(url_status, headers=headers)
         switch_status = json.loads(r.text)
@@ -34,7 +34,7 @@ def get_system_status_switch(auth):
 
 def get_system_cpu(auth):
     headers = {'cookie': auth.cookie}
-    url_cpu = "http://" + auth.ipaddr + "/rest/v3/system/status/cpu"
+    url_cpu = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/status/cpu"
     try:
         r = requests.get(url_cpu, headers=headers)
         cpu = json.loads(r.text)
@@ -44,7 +44,7 @@ def get_system_cpu(auth):
 
 def get_system_memory(auth):
     headers = {'cookie': auth.cookie}
-    url_memory = "http://" + auth.ipaddr + "/rest/v3/system/status/memory"
+    url_memory = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/status/memory"
     try:
         r = requests.get(url_memory, headers=headers)
         memory = json.loads(r.text)
@@ -55,7 +55,7 @@ def get_system_memory(auth):
 
 def get_system_storage(auth):
     headers = {'cookie': auth.cookie}
-    url_storage = "http://" + auth.ipaddr + "/rest/3/system/status/storage"
+    url_storage = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/status/storage"
     try:
         r = requests.get(url_storage, headers=headers)
         storage = json.loads(r.text)
@@ -66,7 +66,7 @@ def get_system_storage(auth):
 
 def get_system_time(auth):
     headers = {'cookie': auth.cookie}
-    url_time = "http://" + auth.ipaddr + "/rest/v3/system/time"
+    url_time = "http://" + auth.ipaddr + "/rest/"+auth.version+"/system/time"
     try:
         r = requests.get(url_time, headers=headers)
         time = json.loads(r.text)
@@ -79,7 +79,7 @@ def get_system_time(auth):
 
 def get_lldp_neigh(auth):
     headers = {'cookie': auth.cookie}
-    url_lldp_neigh = "http://" + auth.ipaddr + "/rest/v3/lldp/remote-device"
+    url_lldp_neigh = "http://" + auth.ipaddr + "/rest/"+auth.version+"/lldp/remote-device"
     try:
         r = requests.get(url_lldp_neigh, headers=headers)
         neigh = json.loads(r.text)['lldp_remote_device_element']

@@ -28,7 +28,7 @@ class TestGetPOEPorts(TestCase):
         test case for get_system
 
         """
-        auth = AOSSAuth(switch, username, password)
+        auth = AOSSAuth(switch, username, password, version=version)
         ports = get_poe_ports(auth)
         self.assertIs(type(ports), list)
         if 'message' in ports:

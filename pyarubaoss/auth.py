@@ -8,13 +8,14 @@ class AOSSAuth():
     This class requests and stores an authentication cookie for the Aruba AOS
     Switch Software.
     """
-    def __init__(self, switchip, username, password):
+    def __init__(self, switchip, username, password, version="v3"):
         url_login = "http://" + switchip + "/rest/v1/login-sessions"
         payload_login = '{\"userName\": \"' + username + '\", \"' + password + '\": \"password\"}"'
         get_cookie = requests.request("POST", url_login, data=payload_login)
         r_cookie = get_cookie.json()['cookie']
         self.cookie = r_cookie
         self.ipaddr = switchip
+        self.version = version
 
 
     def logout(self):
