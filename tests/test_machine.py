@@ -7,5 +7,5 @@ tests associated with that specific vendor will automatically be skipped."""
 switch = '10.11.10.3'
 username = 'admin'
 password = 'password'
-version = 'v2'
+version = 'v3'
 skiptest = True
