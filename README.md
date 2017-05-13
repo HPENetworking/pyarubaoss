@@ -1,6 +1,6 @@
 # HPE Aruba Switch OS Python REST Client
 
-Implementation of Python REST Client to work with the HPE Aruba OS Switch through it's robust RESTFUL API interface.
+Implementation of Python REST Client to work with the HPE Aruba OS Switch through its robust RESTFUL API interface.
 
 To install directly into your python environment please use the **pip install pyarubaaoss** command
 
