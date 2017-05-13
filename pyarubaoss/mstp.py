@@ -27,7 +27,7 @@ def get_mstp_port(auth):
     :rtype dict
     """
     headers = {'cookie': auth.cookie}
-    url_mstp_port = "http://" + auth.ipaddr + "/rest/v1/mstp/port"
+    url_mstp_port = "http://" + auth.ipaddr + "/rest/"+auth.version+"/mstp/port"
     try:
         r = requests.get(url_mstp_port, headers=headers)
         mstp_port = json.loads(r.text)['mstp_port_element']

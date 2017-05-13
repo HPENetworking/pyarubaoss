@@ -5,9 +5,9 @@ import requests, json
 
 def get_mactable(auth):
     """
-    Function to get list of ipaddresses from Aruba OS switch
+    Function to get list of mac-addresses from Aruba OS switch
     :param auth:  AOSSAuth class object returned by pyarubaoss.auth
-    :return list of ipaddresses
+    :return list of mac-addresses
     :rtype list
     """
     headers = {'cookie': auth.cookie}
