@@ -7,3 +7,9 @@ To install directly into your python environment please use the **pip install py
 
 For more information on HPE Aruba Switches, please visit **www.hpe.com/networking**
 
+
+What's Changed:
+
+1.0.1 Initial Release
+1.0.2 added ip address, tests and refactored auth object to allow user to select API version
+1.0.3 added get_mactable and ports functions
