@@ -11,9 +11,9 @@ def get_mactable(auth):
     :rtype list
     """
     headers = {'cookie': auth.cookie}
-    url_mactable = "http://" + auth.ipaddr + "/rest/"+auth.version+"/mac-table"
+    url_mactable = "http://" + auth.ipaddr + "/rest/" + auth.version + "/mac-table"
     try:
-        r = requests.get(url_mactable, headers=headers)
+        r = requests.get(url_mactable, headers=auth.cookie)
         mactable = json.loads(r.text)['mac_table_entry_element']
         return mactable
     except requests.exceptions.RequestException as error:
