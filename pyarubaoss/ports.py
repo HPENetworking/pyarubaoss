@@ -10,10 +10,9 @@ def get_port_stats(auth):
     :return list of ports statistics
     :rtype list
     """
-    headers = {'cookie': auth.cookie}
     url_portstats = "http://" + auth.ipaddr + "/rest/"+auth.version+"/port-statistics"
     try:
-        r = requests.get(url_portstats, headers=headers)
+        r = requests.get(url_portstats, headers=auth.cookie)
         portstats = json.loads(r.text)['port_statistics_element']
         return portstats
     except requests.exceptions.RequestException as error:
@@ -27,10 +26,9 @@ def get_ports(auth):
     :return list of ports
     :rtype list
     """
-    headers = {'cookie': auth.cookie}
     url_ports = "http://" + auth.ipaddr + "/rest/"+auth.version+"/ports"
     try:
-        r = requests.get(url_ports, headers=headers)
+        r = requests.get(url_ports, headers=auth.cookie)
         ports = json.loads(r.text)['port_element']
         return ports
     except requests.exceptions.RequestException as error:

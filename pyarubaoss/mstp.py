@@ -10,10 +10,9 @@ def get_mstp(auth):
     :return dict of mstp status
     :rtype dict
     """
-    headers = {'cookie': auth.cookie}
     url_mstp = "http://" + auth.ipaddr + "/rest/"+auth.version+"/mstp"
     try:
-        r = requests.get(url_mstp, headers=headers)
+        r = requests.get(url_mstp, headers=auth.cookie)
         mstp = json.loads(r.text)
         return mstp
     except requests.exceptions.RequestException as error:
@@ -26,10 +25,9 @@ def get_mstp_port(auth):
     :return list of mstp port status
     :rtype dict
     """
-    headers = {'cookie': auth.cookie}
     url_mstp_port = "http://" + auth.ipaddr + "/rest/"+auth.version+"/mstp/port"
     try:
-        r = requests.get(url_mstp_port, headers=headers)
+        r = requests.get(url_mstp_port, headers=auth.cookie)
         mstp_port = json.loads(r.text)['mstp_port_element']
         return mstp_port
     except requests.exceptions.RequestException as error:
