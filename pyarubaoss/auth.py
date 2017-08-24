@@ -13,9 +13,6 @@ class AOSSAuth():
         payload_login = {"userName": username, "password": password}
         s = requests.Session()
         response = s.post(url_login, data=json.dumps(payload_login), timeout=1)
-        print(response.text)
-        print(response.json()["cookie"])
-        #  r_cookie = get_cookie.json()['cookie']
         self.cookie = {'cookie': response.json()["cookie"]}
         self.ipaddr = switchip
         self.version = version
