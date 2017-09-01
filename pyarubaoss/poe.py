@@ -10,10 +10,9 @@ def get_poe_ports(auth):
     :return list of poe ports
     :rtype list
     """
-    headers = {'cookie': auth.cookie}
     url_poe = "http://" + auth.ipaddr + "/rest/"+auth.version+"/poe/ports"
     try:
-        r = requests.get(url_poe, headers=headers)
+        r = requests.get(url_poe, headers=auth.cookie)
         poe_ports = json.loads(r.text)['port_poe']
         return poe_ports
     except requests.exceptions.RequestException as error:

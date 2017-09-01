@@ -10,10 +10,9 @@ def get_ipaddresses(auth):
     :return list of ipaddresses
     :rtype list
     """
-    headers = {'cookie': auth.cookie}
     url_ipaddresses = "http://" + auth.ipaddr + "/rest/"+auth.version+"/ipaddresses"
     try:
-        r = requests.get(url_ipaddresses, headers=headers)
+        r = requests.get(url_ipaddresses, headers = auth.cookie)
         ipaddresses = json.loads(r.text)['ip_address_subnet_element']
         return ipaddresses
     except requests.exceptions.RequestException as error:
@@ -27,10 +26,9 @@ def get_iproutes(auth):
     :return list of ip routes
     :rtype list
     """
-    headers = {'cookie': auth.cookie}
     url_iproutes = "http://" + auth.ipaddr + "/rest/"+auth.version+"/ip-route"
     try:
-        r = requests.get(url_iproutes, headers=headers)
+        r = requests.get(url_iproutes, headers = auth.cookie)
         iproutes = json.loads(r.text)['ip_route_element']
         return iproutes
     except requests.exceptions.RequestException as error:
