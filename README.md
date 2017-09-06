@@ -13,3 +13,4 @@ What's Changed:
 1.0.1 Initial Release
 1.0.2 added ip address, tests and refactored auth object to allow user to select API version
 1.0.3 added get_mactable and ports functions
+1.0.4 Added print_mactable & auth.cookie in headers
